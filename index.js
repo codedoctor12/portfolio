@@ -62,10 +62,8 @@ app.post("/send", (req, res) => {
       if (err) {
         console.log(err);
        alert('Error 500');
-       Window.stop()
       } else {
       	 alert('Email successfully sent to recipient!!')
-      	 Window.stop()
       }
     });
   });
