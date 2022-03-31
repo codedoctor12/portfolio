@@ -11,8 +11,11 @@
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
     "alert": "^5.0.10",
+    "body-parser": "^1.19.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.9",
     "multiparty": "^4.2.3",
     "nodemailer": "^6.7.3",
     "popups": "^1.1.3"

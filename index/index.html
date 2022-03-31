@@ -5,13 +5,15 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>iPortfolio Bootstrap Template - Index</title>
+  <title>Mohamad Khalifa Web dev Portfolio</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -72,7 +74,7 @@
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
       <h1>Mohamad Khalifa</h1>
-      <p>I'm <span class="typed" data-typed-items="Web Developer, Freelancer"></span></p>
+      <p>I'm <span class="typed" data-typed-items="a Web Developer, a Freelancer"></span></p>
     </div>
   </section><!-- End Hero -->
 
@@ -393,7 +395,7 @@
 
           </div>
     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form id="contact-form" method="POST" action="send" enctype="multipart/form-data">
+            <form id="contact-form" method="POST" action="sendmessage">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -412,11 +414,40 @@
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><input type="submit" onclick="moveToIndex()" name="btnSubmit" class="btnContact" value="Send Message"/></div>
             </form>
-          </div>
+            <script>function moveToIndex() {
+            var name;
+            var email;
+            var phone;
+            var message;
+
+
+            name = document.getElementById("name").value;
+            message = document.getElementById("message").value;
+
+
+
+            $.ajax({
+
+                type: 'POST',
+                data: { "name": name, "address": message },
+                url: "http://localhost:30001/sendmessage",
+
+                success: function (data) {
+                    console.log(data);
+                    alert("Good Job!")
+
+                }
+                
+
+            });
+            window.location.href = "http://localhost:30001/allcustomers";
+
+        }</script>
+
     <!-- Footer -->
-    <script src="./index.js"></script>
+    <!-- <script src="./index.js"></script> -->
   </body>
     </section><!-- End Contact Section -->
 
