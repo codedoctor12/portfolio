@@ -55,6 +55,9 @@ app.use(bodyParser())
 app.use(haltOnTimedout)
 app.use(cookieParser())
 app.use(haltOnTimedout)
+function haltOnTimedout (req, res, next) {
+  if (!req.timedout) next()
+}
 
 app.use(bodyParser.json())
 app.use(
