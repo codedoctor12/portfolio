@@ -90,4 +90,4 @@ app.get('/allmessage',(req, res)=> {
     console.log(err)
   })
 })
-app.listen(process.env.PORT || port)
+app.listen(process.env.PORT || 80)
