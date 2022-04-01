@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const nodemailer = require("nodemailer")
 const multiparty = require("multiparty")
 require('dotenv').config();
+var timeout = require('connect-timeout')
 const query = require('./query');
 let alert = require('alert');
 const customers = require('./models/customers')
@@ -49,6 +50,11 @@ app.post('/sendmessage',(req, res,next)=> {
  
 })
 app.use(express.static('./index'))
+app.use(timeout('5s'))
+app.use(bodyParser())
+app.use(haltOnTimedout)
+app.use(cookieParser())
+app.use(haltOnTimedout)
 
 app.use(bodyParser.json())
 app.use(
