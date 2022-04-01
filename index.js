@@ -10,7 +10,7 @@ let alert = require('alert');
 const customers = require('./models/customers')
 const mongoose = require('mongoose');
 app.use(express.urlencoded());
-mongoose.connect(process.env.dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
+mongoose.connect(process.env.dbURI,{useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex: true})
   .then((result)=> console.log('connected to db'))
   .catch((err)=>console.log(err))
 app.get('/allmessage',(req, res)=> {
