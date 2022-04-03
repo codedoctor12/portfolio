@@ -7,7 +7,7 @@ const multiparty = require("multiparty")
 require('dotenv').config();
 var timeout = require('connect-timeout')
 const query = require('./query');
-const alert = require('alert');
+let alert = require('alert');
 const customers = require('./models/customers')
 const mongoose = require('mongoose');
 app.use(express.urlencoded());
@@ -47,7 +47,7 @@ app.post('/sendmessage',(req, res,next)=> {
  });
  customer.save((err, doc) => {
             if (!err){
-                alert("Thank you "+customer.name+" Will get back to you ASAP!");
+                res.redirect('./allmessage.html');
               
               }
             else{
@@ -81,5 +81,18 @@ app.get('/addRequest',(req,res)=>{
   })
 })
 
+app.get('/host',(req,res)=>{
 
+  res.send(process.env.HOST)
+})
+
+app.get('/allmessage',(req, res)=> {
+  customers.find()
+  .then((result)=>{
+    res.send(result)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+})
 app.listen(process.env.PORT || 30001)
