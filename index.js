@@ -47,7 +47,7 @@ app.post('/sendmessage',(req, res,next)=> {
  });
  customer.save((err, doc) => {
             if (!err){
-                alert('Hello world');
+                console.log('Works!');
               
               }
             else{
