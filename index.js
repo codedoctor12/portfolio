@@ -7,13 +7,17 @@ const multiparty = require("multiparty")
 require('dotenv').config();
 var timeout = require('connect-timeout')
 const query = require('./query');
-let alert = require('alert');
+const alert = require('alert');
 const customers = require('./models/customers')
 const mongoose = require('mongoose');
 app.use(express.urlencoded());
 mongoose.connect(process.env.dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
   .then((result)=> console.log('connected to db'))
   .catch((err)=>console.log(err))
+
+
+
+
 app.get('/allmessage',(req, res)=> {
   customers.find()
   .then((result)=>{
@@ -24,6 +28,9 @@ app.get('/allmessage',(req, res)=> {
   })
 })
 app.use(bodyParser.json())
+
+
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -40,7 +47,7 @@ app.post('/sendmessage',(req, res,next)=> {
  });
  customer.save((err, doc) => {
             if (!err){
-                res.redirect('./allmessage.html');
+                alert("Thank you "+customer.name+" Will get back to you ASAP!");
               
               }
             else{
@@ -73,13 +80,6 @@ app.get('/addRequest',(req,res)=>{
     res.send(result)
   })
 })
-app.get('/allmessage',(req, res)=> {
-  customers.find()
-  .then((result)=>{
-    res.send(result)
-  })
-  .catch((err)=>{
-    console.log(err)
-  })
-})
+
+
 app.listen(process.env.PORT || 30001)

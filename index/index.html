@@ -421,7 +421,7 @@
             var email;
             var phone;
             var message;
-
+            var host = process.env.HOST
 
             name = document.getElementById("name").value;
             message = document.getElementById("message").value;
@@ -432,7 +432,7 @@
 
                 type: 'POST',
                 data: { "name": name, "address": message },
-                url: "https://localhost:30001/sendmessage",
+                url: "https://mohamad-portfolio.herokuapp.com/sendmessage",
 
                 success: function (data) {
                     console.log(data);
