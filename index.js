@@ -47,7 +47,7 @@ app.post('/sendmessage',(req, res,next)=> {
  });
  customer.save((err, doc) => {
             if (!err){
-                res.redirect('./allmessage.html');
+                alert('Hello world');
               
               }
             else{
