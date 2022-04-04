@@ -416,35 +416,38 @@
               </div>
               <div class="text-center"><input type="submit" onclick="moveToIndex()" name="btnSubmit" class="btnContact" value="Send Message"/></div>
             </form>
+             <div class="text-center" id="banner" name="banner" style="display:none;">
+          Thank you for Inquery
+        </div>
             <script>function moveToIndex() {
             var name;
             var email;
             var phone;
             var message;
-            var host = process.env.HOST
 
             name = document.getElementById("name").value;
             message = document.getElementById("message").value;
-
-
-
+      
+              var flag = false
             $.ajax({
 
                 type: 'POST',
+                contentType: "application/json; charset=utf-8",
                 data: { "name": name, "address": message },
-                url: "https://mohamad-portfolio.herokuapp.com/sendmessage",
+                url: "https://mohamad-portfolio.herokuapp.com//sendmessage",
 
                 success: function (data) {
                     console.log(data);
-                    window.alert("Good Job!")
+                    
 
                 }
                 
 
             });
+  
 
         }</script>
-
+       
     <!-- Footer -->
     <!-- <script src="./index.js"></script> -->
   </body>

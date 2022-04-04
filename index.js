@@ -48,6 +48,7 @@ app.post('/sendmessage',(req, res,next)=> {
  customer.save((err, doc) => {
             if (!err){
                 console.log('Works!');
+                alert("Thank you for Inquery "+name+" we will reach out Asap!")
               
               }
             else{
