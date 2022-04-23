@@ -412,41 +412,55 @@
               </div>
               <div class="form-group">
                 <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
+                <textarea class="form-control" name="message" rows="10" id="message" required></textarea>
               </div>
-              <div class="text-center"><input type="submit" onclick="moveToIndex()" name="btnSubmit" class="btnContact" value="Send Message"/></div>
+              <div class="text-center"><div class="box"><input type="submit" onclick="moveToIndex()"name="btnSubmit" class="btnContact" value="Send Message"/></div></div>
             </form>
-             <div class="text-center" id="banner" name="banner" style="display:none;">
-          Thank you for Inquery
+            <div class="popup" id="popup">
+          <div id="inquery">
+          <p>Your details have been saved</p>
+        </div>
+          <button class="btn" type="button" onclick="closePopup()">ok</button>
         </div>
             <script>function moveToIndex() {
             var name;
             var email;
             var phone;
             var message;
+            let popup = document.getElementById("popup");
 
+            
             name = document.getElementById("name").value;
             message = document.getElementById("message").value;
-      
-              var flag = false
+            popup.classList.add("open-popup");
+            document.getElementById("inquery").innerHTML = "Thank you for your inquiry " + name +"! We will be contacting you Promptly!"
+            var flag=false;
             $.ajax({
 
                 type: 'POST',
-                contentType: "application/json; charset=utf-8",
                 data: { "name": name, "address": message },
-                url: "https://mohamad-portfolio.herokuapp.com//sendmessage",
+                url: "http:/localhost:30001/sendmessage",
 
                 success: function (data) {
                     console.log(data);
                     
-
                 }
                 
 
             });
-  
+            
 
-        }</script>
+
+
+        }
+      function closePopup(){
+
+  popup.classList.remove("open-popup")
+  document.getElementById("name").innerHTML = ""
+            document.getElementById("message").innerHTML = ""
+            document.getElementById("subject").innerHTML = ""
+            document.getElementById("email").innerHTML = ""
+  }</script>
        
     <!-- Footer -->
     <!-- <script src="./index.js"></script> -->

@@ -5,7 +5,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<link href="assets/css/style.css" rel="stylesheet">
  </div>
           <div id="only">
             <ol id= "list">
@@ -17,11 +17,11 @@
     function getList() {
         $.ajax({
             type: "GET",
-            url: 'https://mohamad-portfolio.herokuapp.com/allmessage',
+            url: 'http://localhost:30001/allmessage',
             dataType: 'json',
             success: function (data) {
                 var temp = "UserNames: ";
-                for (var i = 0; i < data.length; i++) {
+                for (var i = data.length-4; i < data.length; i++) {
                     
                     temp += "<li> Name:"+data[i].name+" message: "+data[i].message+"</li>";
                     document.getElementById("list").innerHTML = "Welcome! " + temp;
@@ -36,6 +36,17 @@
 
     }
     getList()
-    </script>
+</script> 
+<div class="box">
+    <a class="button" href="#popup1">Let me Pop up</a>
+</div>
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <h2>Welcome to CodeConvey!</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+            This is an example of a pure CSS popup modal that reveals on button click. You can close it by clicking the top close icon.
+        </div>
+    </div>
      </div>
 </html>

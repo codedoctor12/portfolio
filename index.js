@@ -1,6 +1,7 @@
 const express = require('express')
 const port = process.env.PORT
 const app = express()
+
 const bodyParser = require('body-parser')
 const nodemailer = require("nodemailer")
 const multiparty = require("multiparty")
@@ -10,6 +11,7 @@ const query = require('./query');
 let alert = require('alert');
 const customers = require('./models/customers')
 const mongoose = require('mongoose');
+const popup = require('node-popup/dist/cjs.js');
 app.use(express.urlencoded());
 mongoose.connect(process.env.dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
   .then((result)=> console.log('connected to db'))
@@ -48,8 +50,6 @@ app.post('/sendmessage',(req, res,next)=> {
  customer.save((err, doc) => {
             if (!err){
                 console.log('Works!');
-                alert("Thank you for Inquery "+name+" we will reach out Asap!")
-              
               }
             else{
                 console.log('Error during record insertion : ' + err);
