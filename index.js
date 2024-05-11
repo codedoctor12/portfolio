@@ -96,4 +96,4 @@ app.get('/host',(req,res)=>{
 //     console.log(err)
 //   })
 // })
-app.listen(process.env.PORT || 30001)
+app.listen(process.env.PORT || 80 )
