@@ -1,8 +1,8 @@
-// const express = require('express')
-// const port = process.env.PORT
-// const app = express()
+const express = require('express')
+const port = 8000
+const app = express()
 
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 // const nodemailer = require("nodemailer")
 // const multiparty = require("multiparty")
 // require('dotenv').config();
@@ -33,11 +33,11 @@
 
 
 
-// app.use(
-//   bodyParser.urlencoded({
-//     extended: true,
-//   })
-// )
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 
 // app.post('/sendmessage',(req, res,next)=> {
 //   console.log(req.body)
@@ -57,7 +57,7 @@
 //       });
  
 // })
-// app.use(express.static('./index'))
+app.use(express.static('./index'))
 
 // app.use(bodyParser.json())
 // app.use(
@@ -66,9 +66,9 @@
 //   })
 // )
 
-// app.get('/', (request, response) => {
-//   response.json({ info: 'Node.js, Express, and Postgres API '+process.env.PORT  })
-// })
+app.get('/', (request, response) => {
+  response.json({ info: 'Node.js, Express, and Postgres API '+port  })
+})
 
 // app.get('/addRequest',(req,res)=>{
 
@@ -82,10 +82,10 @@
 //   })
 // })
 
-// app.get('/host',(req,res)=>{
+app.get('/host',(req,res)=>{
 
-//   res.send(process.env.HOST)
-// })
+  res.send(localhost)
+})
 
 // app.get('/allmessage',(req, res)=> {
 //   customers.find()
@@ -96,4 +96,4 @@
 //     console.log(err)
 //   })
 // })
-// app.listen(process.env.PORT || 30001)
+app.listen(port || 30001)
