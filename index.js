@@ -1,5 +1,4 @@
 const express = require('express')
-const port = "8000"
 const app = express()
 
 const bodyParser = require('body-parser')
@@ -96,4 +95,4 @@ app.get('/host',(req,res)=>{
 //     console.log(err)
 //   })
 // })
-app.listen(process.env.PORT|| 443)
+app.listen(process.env.PORT|| 8000)
